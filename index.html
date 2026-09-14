@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>官网定位器</title>
+    <link rel="icon" href="resouces/favicon.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,8 +14,9 @@
         h1 {
             color: #333;
             font-weight: lighter;
-            font-size: 42px;
+            font-size: 64px;
             margin-bottom: 10px;
+            margin-top: 5px;
         }
         h2 {
             color: #666;
@@ -151,15 +153,48 @@
             font-size: 12px;
             color: #999;
         }
+        .mini-btn {
+            margin-left: 8px;
+            padding: 5px 12px;
+            font-size: 13px;
+            color: #279add;
+            background-color: #f7fbfe;
+            border: 1px solid #279add;
+            border-radius: 5px;
+            box-shadow: none;
+        }
+        .mini-btn:hover {
+            color: #ffffff;
+            background-color: #279add;
+            box-shadow: none;
+        }
+        .mini-btn:active {
+            background-color: #1f4e69;
+            border-color: #1f4e69;
+            box-shadow: none;
+        }
+        .rotate{
+            animation: spin 8s linear infinite;
+        }
+        @keyframes spin{
+            from {
+                transform: rotate(0deg);
+                }
+                to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
+    <img src="resouces/app.png" class="rotate">
     <h1>官网定位器</h1>
     <h2>Website Finder</h2>
     <div style="margin-top: 45px;">
         <span>请在下方输入您想要找的...<br></span>
         <input type="search" placeholder="输入关键词或外号..." style="margin-top: 20px; padding: 10px; width: 300px; font-size: 16px;">
         <button>定位！</button>
+        <button id="show-all-btn" class="mini-btn" type="button">显示全部</button>
     </div>
     <div id="results">
         <!-- 当这里没有结果时，只显示"没有找到相关网站..."或"搜索一个试试！" -->
@@ -169,7 +204,9 @@
         <p>2026 gkll44</p>
         <a href="https://github.com/GKll44/WebsiteFinder">为我们提供数据😎</a>
     </div>
+    <!-- ===== 数据层：只放关键词，方便扩充 ===== -->
     <script src="data.js"></script>
+    <!-- ===== 逻辑层：搜索与渲染 ===== -->
     <script src="app.js"></script>
 </body>
 </html>

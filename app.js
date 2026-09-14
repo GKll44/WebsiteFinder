@@ -9,6 +9,7 @@
     var input = document.querySelector('input[type="search"]');
     var btn = input ? input.nextElementSibling : null;
     var resultsEl = document.getElementById("results");
+    var showAllBtn = document.getElementById("show-all-btn");
 
     var MAX_RESULTS = 12;
 
@@ -139,10 +140,27 @@
         renderList(scored.slice(0, MAX_RESULTS).map(function (x) { return x.site; }));
     }
 
+    /* 显示全部：平铺渲染整个数据库，不受 MAX_RESULTS 限制 */
+    function showAll() {
+        if (!SITE_DB.length) {
+            resultsEl.innerHTML =
+                '<span class="hint">(°ー°〃)</span>' +
+                '<span class="hint">数据库还是空的...</span>';
+            return;
+        }
+        renderList(SITE_DB);
+    }
+
     /* 事件绑定 */
     if (btn) {
         btn.addEventListener("click", function () {
             search(input.value);
+        });
+    }
+
+    if (showAllBtn) {
+        showAllBtn.addEventListener("click", function () {
+            showAll();
         });
     }
 
